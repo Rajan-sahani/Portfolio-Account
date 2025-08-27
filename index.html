@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Rajan Sahani — Portfolio</title>
+  <meta name="description" content="Rajan Sahani — Data Scientist | ML Engineer | Full‑stack" />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --accent:#06b6d4; --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
+      --maxw:1100px; font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,#071021 0%, #071827 60%);color:#e6eef6}
+    .wrap{max-width:var(--maxw);margin:32px auto;padding:28px}
+    header{display:flex;align-items:center;gap:18px}
+    .avatar-img{width:98px;height:98px;border-radius:14px;object-fit:cover;box-shadow:0 4px 12px rgba(0,0,0,0.6)}
+    h1{margin:0;font-size:28px}
+    p.lead{color:var(--muted);margin:6px 0 0}
+
+    .grid{display:grid;grid-template-columns:1fr 380px;gap:24px;margin-top:22px}
+    .card{background:var(--card);border-radius:14px;padding:18px;box-shadow:0 6px 18px rgba(2,6,23,0.6);}
+    .card h3{margin:0 0 8px}
+    .section{margin-bottom:14px}
+
+    .skills{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{background:var(--glass);padding:8px 10px;border-radius:999px;color:var(--muted);font-weight:600;font-size:13px}
+
+    .experience-item{border-left:3px solid rgba(255,255,255,0.03);padding-left:12px;margin-bottom:12px}
+    .project{margin-bottom:12px}
+
+    footer{margin-top:26px;color:var(--muted);font-size:13px}
+
+    /* Contact form */
+    form{display:flex;flex-direction:column;gap:8px}
+    input,textarea,button{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:inherit}
+    button{background:var(--accent);border:none;color:#04102a;font-weight:700;cursor:pointer}
+
+    /* small screens */
+    @media (max-width:900px){.grid{grid-template-columns:1fr} .avatar-img{width:84px;height:84px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="profile.jpg.jpg" alt="Rajan Sahani" class="avatar-img" />
+      <div>
+        <h1>Rajan Sahani</h1>
+        <p class="lead">Final‑year B.Tech • Data Scientist | Machine Learning | Data Analytics</p>
+        <p class="lead" style="margin-top:8px">Email: <a href="mailto:rajansahani1227@gmail.com">rajansahani1227@gmail.com</a> • Phone: +91 6386162124</p>
+      </div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="section">
+          <h3>About</h3>
+          <p>Final‑year B.Tech student focused on data science, machine learning and analytics. Experienced with Python, SQL, scikit‑learn and deploying models using Flask and Streamlit. Strong at data preprocessing, EDA and delivering actionable visualizations.</p>
+        </div>
+
+        <div class="section">
+          <h3>Technical Skills</h3>
+          <div class="skills">
+            <span class="chip">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Pandas</span>
+            <span class="chip">NumPy</span>
+            <span class="chip">Scikit‑learn</span>
+            <span class="chip">Matplotlib</span>
+            <span class="chip">PowerBI</span>
+            <span class="chip">Tableau</span>
+            <span class="chip">MySQL</span>
+            <span class="chip">Flask</span>
+            <span class="chip">Streamlit</span>
+            <span class="chip">Git</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Training & Certifications</h3>
+          <ul>
+            <li>AWS Academy — Machine Learning Foundations</li>
+            <li>AWS Academy — Data Center Technician</li>
+            <li>Data Analytics Job Simulation — Forage</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Education</h3>
+          <strong>B.Tech — Computer Science & Engineering (Pursuing)</strong><br/>
+          GNA University, Phagwara. (June 2022 — Present)
+          <p style="color:var(--muted);margin-top:8px">Senior Secondary (NEB) — 87% • Secondary (SEE) — 83% (merit scholarship)</p>
+        </div>
+
+        <div class="section">
+          <h3>Volunteer</h3>
+          <p>Event organiser for Red Hands NGO — organised an event for handicapped children (April 2024).</p>
+        </div>
+
+        <div class="section">
+          <h3>Interpersonal</h3>
+          <div class="skills">
+            <span class="chip">Analytical Thinking</span>
+            <span class="chip">Collaboration</span>
+            <span class="chip">Initiative</span>
+            <span class="chip">Data‑driven Decisions</span>
+          </div>
+        </div>
+
+      </section>
+
+      <aside class="card">
+        <div class="section">
+          <h3>Experience</h3>
+          <div class="experience-item">
+            <strong>Data Science Intern — Cyber Core Technologies</strong>
+            <div style="color:var(--muted);font-size:13px">Jul 2025 – Aug 20</div>
+            <ul>
+              <li>Performed EDA and built visual dashboards.</li>
+              <li>Worked on predictive analytics and data cleaning for model readiness.</li>
+            </ul>
+          </div>
+
+          <div class="experience-item">
+            <strong>ML Intern — Excellence Technologies</strong>
+            <div style="color:var(--muted);font-size:13px">Jun 2024 – Jul 2024</div>
+            <ul>
+              <li>Built supervised models, preprocessing and feature selection.</li>
+              <li>Deployed models using Flask for real‑time predictions.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Selected Projects</h3>
+          <div class="project">
+            <strong>Disease Prediction from Symptoms (Student Project)</strong>
+            <div style="color:var(--muted);font-size:13px">Tools: Python, Pandas, scikit‑learn</div>
+            <p>Built symptom-disease mapping, preprocessing and predictive pipeline.</p>
+          </div>
+
+          <div class="project">
+            <strong>NEPSE Stock Sentiment Dashboard</strong>
+            <div style="color:var(--muted);font-size:13px">Tools: Scraping, Sentiment Analysis, Streamlit</div>
+            <p>End‑to‑end dashboard combining news scraping and price prediction pipeline.</p>
+          </div>
+        </div>
+
+        <div class="section">
+          <h3>Contact</h3>
+          <form onsubmit="handleContact(event)">
+            <input id="name" placeholder="Your name" required />
+            <input id="email" placeholder="Your email" type="email" required />
+            <textarea id="message" placeholder="Short message" rows="4" required></textarea>
+            <button type="submit">Send (mail)</button>
+          </form>
+          <p style="color:var(--muted);font-size:13px;margin-top:8px">Or email directly: <a href="mailto:rajansahani1227@gmail.com">rajansahani1227@gmail.com</a></p>
+        </div>
+      </aside>
+    </main>
+
+    <footer style="max-width:var(--maxw);margin:18px auto;text-align:center">
+      <small>© Rajan Sahani — Data Science & ML • Designed & coded by a senior full‑stack engineer</small>
+    </footer>
+  </div>
+
+  <script>
+    function handleContact(e){
+      e.preventDefault();
+      const name=document.getElementById('name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const message=document.getElementById('message').value.trim();
+      if(!name||!email||!message){alert('Please fill all fields');return}
+      const subject = encodeURIComponent('Portfolio contact from '+name);
+      const body = encodeURIComponent('Name: '+name+'\nEmail: '+email+'\n\n'+message);
+      window.location.href = `mailto:rajansahani1227@gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>
