@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rajan Sahani - Data Science & ML Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Tailwind Configuration (AI/Cyber Glow Theme) */
+        :root {
+            --primary-color: #00A7FF; /* Bright Blue */
+            --secondary-color: #A700FF; /* Electric Purple */
+            --dark-bg: #0A0A0A;
+            --mid-bg: #141414;
+        }
+
+        /* Base styles and Inter Font */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: #E0E0E0;
+            overflow-x: hidden; /* Prevent horizontal scroll from subtle animations */
+            scroll-behavior: smooth;
+        }
+        
+        /* Utility for glowing text and elements */
+        .glow-text {
+            text-shadow: 0 0 5px var(--primary-color), 0 0 10px var(--primary-color);
+        }
+
+        .glow-border {
+            border: 1px solid rgba(0, 167, 255, 0.3);
+            box-shadow: 0 0 15px rgba(0, 167, 255, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .glow-border:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 25px rgba(0, 167, 255, 0.8), 0 0 50px rgba(167, 0, 255, 0.4);
+        }
+
+        /* Glassmorphism Effect for Cards */
+        .glass-card {
+            background-color: rgba(30, 30, 30, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Background Animation (Simulated Neural Network/Plexus) */
+        #neural-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 0;
+            opacity: 0.1;
+            background: radial-gradient(circle at 50% 50%, rgba(0, 167, 255, 0.1), transparent 70%);
+            animation: pulse 15s infinite alternate ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.1; }
+            100% { transform: scale(1.1); opacity: 0.2; }
+        }
+        
+        /* CTA Button Pulsating Glow */
+        .cta-glow-btn {
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .cta-glow-btn::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            z-index: -1;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            opacity: 0.5;
+            animation: btn-pulse 2s infinite;
+        }
+
+        @keyframes btn-pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        /* Scroll Indicator Bounce */
+        .bounce-chevron {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Timeline styles */
+        .timeline {
+            position: relative;
+        }
+        .timeline-line {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            left: 50%;
+            margin-left: -1px;
+            background: linear-gradient(to bottom, transparent, var(--primary-color), transparent);
+        }
+        .timeline-node {
+            position: absolute;
+            left: 50%;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            margin-left: -0.5rem;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color);
+            transition: all 0.5s;
+        }
+
+        /* Intersection Observer Fade-In Classes */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-[var(--dark-bg)]">
+
+    <!-- Navbar (Hidden, but structure required for modern design) -->
+    <header class="fixed top-0 left-0 right-0 z-50 p-4 md:p-6 bg-[var(--dark-bg)] bg-opacity-80 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold glow-text">RS.</a>
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-[var(--primary-color)] transition duration-300">01. About & Skills</a>
+                <a href="#experience" class="hover:text-[var(--primary-color)] transition duration-300">02. Career Trajectory</a>
+                <a href="#achievements" class="hover:text-[var(--primary-color)] transition duration-300">03. Key Achievements</a>
+                <a href="#contact" class="hover:text-[var(--primary-color)] transition duration-300">05. Get In Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 
+        SECTION 1: HERO SECTION 
+        Full Screen & Immersive
+    -->
+    <section id="hero" class="relative flex items-center justify-center h-screen overflow-hidden">
+        <!-- Animated Neural Background -->
+        <div id="neural-bg"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-12 gap-8 items-center h-full pt-20">
+            <!-- Content Column (Left/Center) -->
+            <div class="md:col-span-7 space-y-4 text-center md:text-left">
+                <p class="text-lg text-gray-400 font-medium">Hello, I'm</p>
+                <h1 class="text-5xl sm:text-7xl font-extrabold tracking-tight text-white">
+                    RAJAN SAHANI
+                </h1>
+                <div class="h-10 text-xl sm:text-3xl font-light glow-text">
+                    <span id="typing-text"></span><span class="typing-cursor">|</span>
+                </div>
+                
+                <!-- CTA Button -->
+                <a href="#experience" class="inline-block px-8 py-3 mt-8 text-lg font-semibold rounded-full bg-[var(--primary-color)] text-black transition hover:scale-105 cta-glow-btn">
+                    View My Work
+                </a>
+            </div>
+
+            <!-- Photo Column (Right) -->
+            <div class="md:col-span-5 flex justify-center md:justify-end">
+                <!-- Placeholder for the Professional Headshot -->
+                <div class="w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden bg-gray-900 border-2 border-[var(--primary-color)] shadow-[0_0_50px_rgba(0,167,255,0.7)]">
+                    <img src="Gemini_Generated_Image_cnl5zxcnl5zxcnl5.png" 
+                         alt="Rajan Sahani Professional Headshot Placeholder" 
+                         class="object-cover w-full h-full opacity-80"
+                         onerror="this.onerror=null;this.src='https://placehold.co/900x900/1C1C1C/00A7FF?text=Rajan+Sahani';"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10">
+            <a href="#about" class="block text-[var(--primary-color)] bounce-chevron">
+                <!-- Glowing Chevron Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 glow-text" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-32">
+
+        <!-- 
+            SECTION 2: PROFILE & EXPERTISE 
+        -->
+        <section id="about" class="fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-16 text-gray-200">
+                <span class="text-[var(--primary-color)] font-mono">01.</span> // ABOUT & SKILLS
+            </h2>
+            
+            <div class="grid lg:grid-cols-12 gap-12">
+                <!-- Left Column: Profile -->
+                <div class="lg:col-span-5 space-y-4">
+                    <h3 class="text-xl font-semibold mb-4 text-white">Profile Overview</h3>
+                    <p class="text-gray-400 leading-relaxed text-md">
+                        Final-year B.Tech student with expertise in **Data Science, Machine Learning, and Data Analytics**. Skilled in Python, SQL, and key libraries like Pandas, Scikit-learn, and Matplotlib. 
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-md">
+                        Experienced in end-to-end ML project development, including data preprocessing, EDA, and model deployment using Flask. I am adept at deriving actionable insights from complex data and presenting them through clear visualizations. Eager to contribute to data-driven solutions in a forward-thinking organization.
+                    </p>
+                </div>
+
+                <!-- Right Column: Skills Grid -->
+                <div class="lg:col-span-7">
+                    <h3 class="text-xl font-semibold mb-6 text-white">Technical Expertise</h3>
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <!-- Skill Card Template -->
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <h4 class="text-lg font-bold text-[var(--primary-color)] flex items-center mb-2">
+                                <!-- Data Analysis Icon (Diagram) -->
+                                <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+                                Data Analysis Core
+                            </h4>
+                            <p class="text-sm text-gray-400">Pandas, NumPy, Scikit-learn, Matplotlib, EDA.</p>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <h4 class="text-lg font-bold text-[var(--primary-color)] flex items-center mb-2">
+                                <!-- Programming Icon (Code Block) -->
+                                <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                Programming & SQL
+                            </h4>
+                            <p class="text-sm text-gray-400">Python, R languages, SQL, MySQL, SQLite.</p>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <h4 class="text-lg font-bold text-[var(--primary-color)] flex items-center mb-2">
+                                <!-- Visualization Icon (Bar Chart) -->
+                                <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"></line><line x1="18" y1="20" x2="18" y2="4"></line><line x1="6" y1="20" x2="6" y2="16"></line></svg>
+                                Visualization Tools
+                            </h4>
+                            <p class="text-sm text-gray-400">PowerBI, Tableau, Excel, Seaborn.</p>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-xl glow-border">
+                            <h4 class="text-lg font-bold text-[var(--primary-color)] flex items-center mb-2">
+                                <!-- Deployment Icon (Cloud) -->
+                                <svg class="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"></path><path d="M18 13l-1.5-7.5L2 13l3 3 7 7 3-3z"></path></svg>
+                                ML Operations & Tools
+                            </h4>
+                            <p class="text-sm text-gray-400">Flask, Streamlit, Jupyter, VS Code, Git.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            SECTION 3: WORK EXPERIENCE 
+        -->
+        <section id="experience" class="fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-20 text-gray-200">
+                <span class="text-[var(--primary-color)] font-mono">02.</span> // CAREER TRAJECTORY
+            </h2>
+
+            <div class="relative timeline max-w-5xl mx-auto">
+                <!-- Glowing Vertical Line -->
+                <div class="hidden md:block timeline-line"></div>
+                
+                <!-- Experience Item 1 (Right of Line on Desktop) -->
+                <div class="md:grid md:grid-cols-2 items-center mb-16 relative">
+                    <!-- Date & Logo (Left on Desktop) -->
+                    <div class="md:text-right md:pr-12 mb-4 md:mb-0">
+                        <p class="text-sm font-mono text-[var(--primary-color)]">June 2024 - July 2024</p>
+                        <!-- Placeholder Logo -->
+                        <div class="text-xl font-bold text-gray-200">EXCELLENCE TECHNOLOGIES</div>
+                    </div>
+                    
+                    <!-- Content Card (Right on Desktop) -->
+                    <div class="glass-card p-6 rounded-xl glow-border md:pl-12 md:border-l-0">
+                        <h4 class="text-xl font-bold text-white mb-2">ML INTERN <span class="text-[var(--secondary-color)]">(Partial)</span></h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm">
+                            <li>Built and trained supervised learning models using Python and Scikit-learn.</li>
+                            <li>Performed data preprocessing, feature selection, and rigorous model evaluation.</li>
+                            <li>Deployed ML models using Flask for real-time prediction services.</li>
+                            <li>Collaborated on team projects simulating real-world business problems.</li>
+                        </ul>
+                    </div>
+                    <!-- Timeline Node -->
+                    <div class="timeline-node top-0 md:top-auto md:bottom-auto"></div>
+                </div>
+
+                <!-- Experience Item 2 (Left of Line on Desktop) -->
+                <div class="md:grid md:grid-cols-2 items-center mb-16 relative">
+                    <!-- Content Card (Left on Desktop) -->
+                    <div class="glass-card p-6 rounded-xl glow-border md:pr-12 md:border-r-0 md:text-right md:order-1">
+                        <h4 class="text-xl font-bold text-white mb-2">Data Science INTERN <span class="text-[var(--secondary-color)]">(Partial)</span></h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm">
+                            <li>Conducted exploratory data analysis (EDA) and built visual dashboards.</li>
+                            <li>Worked on predictive analytics projects using Pandas, NumPy, and Matplotlib.</li>
+                            <li>Cleaned and transformed raw datasets for insights and model readiness.</li>
+                            <li>Gained exposure to end-to-end data science workflows from data collection to model deployment.</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Date & Logo (Right on Desktop) -->
+                    <div class="md:text-left md:pl-12 mb-4 md:mb-0 md:order-2">
+                        <p class="text-sm font-mono text-[var(--primary-color)]">Jul 2025 - Aug 20</p>
+                        <!-- Placeholder Logo -->
+                        <div class="text-xl font-bold text-gray-200">CYBER CORE TECHNOLOGIES</div>
+                    </div>
+                    <!-- Timeline Node -->
+                    <div class="timeline-node top-0 md:top-auto md:bottom-auto"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            SECTION 4: IMPACT & ACHIEVEMENTS 
+        -->
+        <section id="achievements" class="fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-16 text-gray-200">
+                <span class="text-[var(--primary-color)] font-mono">03.</span> // KEY ACHIEVEMENTS
+            </h2>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Achievement Card 1: Model Accuracy -->
+                <div class="glass-card p-8 rounded-xl glow-border text-center relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 70% 30%, var(--primary-color), transparent 70%);"></div>
+                    <p class="text-6xl font-extrabold text-[var(--primary-color)] mb-2 relative z-10">93%</p>
+                    <h3 class="text-xl font-bold text-white mb-2 relative z-10">Model Accuracy</h3>
+                    <p class="text-gray-400 text-sm relative z-10">Developed and deployed supervised ML models achieving high precision in real-time prediction tasks.</p>
+                </div>
+
+                <!-- Achievement Card 2: Data Transformation -->
+                <div class="glass-card p-8 rounded-xl glow-border text-center relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 30% 70%, var(--secondary-color), transparent 70%);"></div>
+                    <p class="text-6xl font-extrabold text-[var(--secondary-color)] mb-2 relative z-10">100+</p>
+                    <h3 class="text-xl font-bold text-white mb-2 relative z-10">Datasets Processed</h3>
+                    <p class="text-gray-400 text-sm relative z-10">Applied robust preprocessing and feature engineering techniques to clean and transform complex raw data.</p>
+                </div>
+
+                <!-- Achievement Card 3: Visualization Impact -->
+                <div class="glass-card p-8 rounded-xl glow-border text-center relative overflow-hidden">
+                    <div class="absolute inset-0 opacity-10" style="background: radial-gradient(circle at 50% 50%, var(--primary-color), transparent 70%);"></div>
+                    <p class="text-6xl font-extrabold text-[var(--primary-color)] mb-2 relative z-10">3+</p>
+                    <h3 class="text-xl font-bold text-white mb-2 relative z-10">Visual Tools Mastery</h3>
+                    <p class="text-gray-400 text-sm relative z-10">Proficiently built visual dashboards using PowerBI, Tableau, and Seaborn for actionable business insights.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 
+            SECTION 5: EDUCATION & CERTIFICATIONS 
+        -->
+        <section id="education" class="fade-in-section">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-16 text-gray-200">
+                <span class="text-[var(--primary-color)] font-mono">04.</span> // EDUCATION & CERTIFICATIONS
+            </h2>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Left Column: Education -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-white border-b border-gray-800 pb-2">Academic Background</h3>
+                    <div class="space-y-6">
+                        <!-- Degree 1 -->
+                        <div class="glass-card p-5 rounded-xl glow-border">
+                            <p class="text-sm font-mono text-[var(--primary-color)]">June 2022 - Present</p>
+                            <h4 class="text-xl font-bold text-white">B.Tech Computer Science and Engineering</h4>
+                            <p class="text-gray-400">GNA University, Phagwara, Punjab</p>
+                            <p class="text-xs italic text-gray-500 mt-2">Focus on Data Analysis and Machine Learning techniques.</p>
+                        </div>
+                        <!-- Degree 2 -->
+                        <div class="glass-card p-5 rounded-xl glow-border">
+                            <p class="text-sm font-mono text-[var(--primary-color)]">April 2020 - March 2021</p>
+                            <h4 class="text-xl font-bold text-white">Senior Secondary Examination, NEB (87%)</h4>
+                            <p class="text-gray-400">Annapurna Model College, Butwal</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Certifications -->
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-white border-b border-gray-800 pb-2">Professional Certifications</h3>
+                    <div class="space-y-6">
+                        <!-- Certification List -->
+                        <div class="glass-card p-5 rounded-xl glow-border space-y-3">
+                            <div class="flex items-start">
+                                <!-- Brain Icon for ML -->
+                                <svg class="w-6 h-6 mr-3 text-[var(--secondary-color)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0 0 6h.001"></path><path d="M12 2c-5.523 0-10 4.477-10 10s4.477 10 10 10 10-4.477 10-10-4.477-10-10-10z"></path><path d="M12 6a3 3 0 0 0 0 6h.001"></path><path d="M12 10a3 3 0 0 0 0 6h.001"></path><path d="M12 14a3 3 0 0 0 0 6h.001"></path></svg>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white">AWS Academy - Machine Learning Foundations</h4>
+                                    <p class="text-sm text-gray-400">Deep dive into ML concepts and AWS tools.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <!-- Server Icon -->
+                                <svg class="w-6 h-6 mr-3 text-[var(--secondary-color)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white">AWS Academy - Data Center Technician</h4>
+                                    <p class="text-sm text-gray-400">Core knowledge in hardware and infrastructure.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <!-- Document/Research Icon -->
+                                <svg class="w-6 h-6 mr-3 text-[var(--secondary-color)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 10 8 9"></polyline></svg>
+                                <div>
+                                    <h4 class="text-lg font-bold text-white">Data Analytics Job Simulation - Forage</h4>
+                                    <p class="text-sm text-gray-400">Practical data analysis workflow experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- 
+            SECTION 6: CONTACT & CALL TO ACTION 
+        -->
+        <section id="contact" class="fade-in-section text-center pt-20 pb-40">
+            <h2 class="text-3xl sm:text-4xl font-extrabold mb-12 text-gray-200">
+                <span class="text-[var(--primary-color)] font-mono">05.</span> // GET IN TOUCH
+            </h2>
+            
+            <h3 class="text-4xl sm:text-5xl font-extrabold text-white mb-6 leading-tight">
+                Have a project in mind or want to collaborate?
+            </h3>
+            
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-10">
+                I'm currently available for data science projects, ML consulting opportunities, and open-source contributions. Let's build something impactful.
+            </p>
+            
+            <!-- Main CTA Button -->
+            <a href="mailto:rajansahani1227@gmail.com?subject=Collaboration%20Opportunity%20from%20Portfolio" 
+               class="inline-block px-10 py-4 text-xl font-semibold rounded-full bg-[var(--primary-color)] text-black transition hover:scale-105 cta-glow-btn">
+                Say Hello
+            </a>
+
+            <!-- Contact Links -->
+            <div class="flex justify-center space-x-8 mt-16 text-[var(--primary-color)]">
+                <!-- Email Icon -->
+                <a href="mailto:rajansahani1227@gmail.com" class="hover:scale-110 transition duration-300">
+                    <svg class="w-8 h-8 glow-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </a>
+                
+                <!-- LinkedIn Icon (Using a placeholder, as LinkedIn URL isn't in resume) -->
+                <a href="#" onclick="showModal('Please replace the # with your LinkedIn profile URL.')" class="hover:scale-110 transition duration-300">
+                    <svg class="w-8 h-8 glow-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+                
+                <!-- Phone Icon -->
+                <a href="tel:+916386162124" class="hover:scale-110 transition duration-300">
+                    <svg class="w-8 h-8 glow-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.63A2 2 0 0 1 3.08 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </a>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="text-center py-8 border-t border-gray-900 text-gray-500 text-sm">
+        <p>Designed and Built by Rajan Sahani | Data Science Portfolio</p>
+    </footer>
+
+    <!-- Custom Modal for Alerts (replacing alert()) -->
+    <div id="custom-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center transition-opacity duration-300">
+        <div class="bg-[var(--mid-bg)] p-6 rounded-lg max-w-sm w-full glow-border text-center">
+            <p id="modal-message" class="text-white mb-4"></p>
+            <button onclick="hideModal()" class="px-4 py-2 bg-[var(--primary-color)] text-black rounded font-semibold transition hover:opacity-80">Close</button>
+        </div>
+    </div>
+
+
+    <script>
+        // --- Custom Utility Functions ---
+
+        // Function to replace alert() and confirm()
+        function showModal(message) {
+            document.getElementById('modal-message').innerText = message;
+            document.getElementById('custom-modal').classList.remove('hidden');
+        }
+        function hideModal() {
+            document.getElementById('custom-modal').classList.add('hidden');
+        }
+
+        // --- Typing Animation Logic ---
+        const phrases = [
+            "Data Science & ML Enthusiast.",
+            "Predictive Analytics Specialist.",
+            "Transforming Data into Actionable Insights."
+        ];
+        const typingTextElement = document.getElementById('typing-text');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                // Delete one character
+                typingTextElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                // Type one character
+                typingTextElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            // Determine if the full phrase is typed/deleted
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                // Wait at end, then start deleting
+                setTimeout(() => isDeleting = true, 1500);
+            } else if (isDeleting && charIndex === 0) {
+                // Done deleting, move to next phrase
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+            }
+
+            const typingSpeed = isDeleting ? 50 : 100; // Fast delete, slower type
+            setTimeout(type, typingSpeed);
+        }
+
+        // --- Intersection Observer for Fade-In Animation ---
+        function setupIntersectionObserver() {
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observerOptions = {
+                root: null, // relative to the viewport
+                rootMargin: '0px',
+                threshold: 0.1 // visibility threshold
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        }
+
+        // Initialize on window load
+        window.onload = function() {
+            type(); // Start typing animation
+            setupIntersectionObserver(); // Start scroll animations
+        }
+
+    </script>
+</body>
+</html>
